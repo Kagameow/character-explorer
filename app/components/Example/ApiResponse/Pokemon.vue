@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const { data, status } = usePokemonData('pokemon')
+const { data, status } = usePokemonData('/api/v2/pokemon/')
 </script>
 
 <template>

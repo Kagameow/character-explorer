@@ -45,7 +45,8 @@ export default defineNuxtConfig({
   apiParty: {
     endpoints: {
       pokemon: {
-        url: 'https://pokeapi.co/api/v2',
+        url: 'https://pokeapi.co',
+        schema: 'https://raw.githubusercontent.com/PokeAPI/pokeapi/refs/heads/master/openapi.yml',
       },
       rickAndMorty: {
         url: 'https://rickandmortyapi.com/api',
