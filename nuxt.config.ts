@@ -1,5 +1,3 @@
-import { pwa } from './app/config/pwa'
-
 export default defineNuxtConfig({
   modules: [
     '@nuxt/content',
@@ -63,5 +61,6 @@ export default defineNuxtConfig({
     },
   },
 
-  pwa,
+  // Looks like netlify dont like pwa
+  // pwa,
 })
