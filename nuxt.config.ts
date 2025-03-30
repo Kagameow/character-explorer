@@ -29,6 +29,7 @@ export default defineNuxtConfig({
   compatibilityDate: '2024-08-14',
 
   nitro: {
+    preset: 'netlify-edge',
     esbuild: {
       options: {
         target: 'esnext',
