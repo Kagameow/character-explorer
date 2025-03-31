@@ -20,7 +20,7 @@ const universes = KNOWN_UNIVERSES_CONFIG
               :avatar=" universe.icon ? {
                 src: universe.icon,
               } : undefined"
-              :to="key"
+              :to="`/${key}`"
               :label="universe.name"
             />
           </li>

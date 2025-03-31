@@ -28,7 +28,7 @@ const universes = KNOWN_UNIVERSES_CONFIG
           transform transition duration-300 hover:scale-105"
         >
           <UButton
-            :to="`${key}`"
+            :to="`/${key}`"
             variant="ghost"
             class="block w-full text-left"
           >
