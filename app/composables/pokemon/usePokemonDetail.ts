@@ -1,8 +1,8 @@
-import type { CharacterDetails } from '~/types/PageCharacterId'
+import type { CharacterDetails, CharacterPicture } from '~/types/PageCharacterId'
 
-export function usePokemonDetail(id: string) {
+export async function usePokemonDetail(id: string) {
   const { data: responseData, status, error }
-    = usePokemonData(`/api/v2/pokemon/${id}/` as `/api/v2/pokemon/{id}/`)
+    = await usePokemonData(`/api/v2/pokemon/${id}/` as `/api/v2/pokemon/{id}/`)
 
   const parsePokemonStats = (stats: NonNullable<typeof responseData.value>['stats']) => {
     return stats.map(stat => ({
@@ -11,16 +11,11 @@ export function usePokemonDetail(id: string) {
     }))
   }
 
-  interface SpritePicture {
-    alt: string
-    url: string
-  }
-
   function parsePokemonPictures(
     sprites: NonNullable<typeof responseData.value>['sprites'],
     prefix = '',
-  ): SpritePicture[] {
-    let pictures: SpritePicture[] = []
+  ): CharacterPicture[] {
+    let pictures: CharacterPicture[] = []
 
     const keys = Object.keys(sprites).sort((a, b) => {
       const rank = (key: string): number => {

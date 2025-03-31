@@ -32,36 +32,41 @@ const hasData = computed(() => !!data.value && Object.keys(data.value).length)
           Character Details
         </h2>
       </template>
-      <UCarousel
-        v-slot="{ item }"
-        :items="data.images as CharacterPicture[]" class="w-full max-w-xs mx-auto"
-        arrows
-      >
-        <img
-          :src="item.url"
-          :alt="item.alt"
-          loading="lazy"
-          width="320"
-          height="320"
-          class="rounded-lg"
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <UCarousel
+          v-slot="{ item }"
+          :items="data.images as CharacterPicture[]"
+          class="w-full h-full max-w-xs mx-auto flex items-center justify-center"
+          arrows
         >
-      </UCarousel>
-      <ul class="space-y-4">
-        <li
-          v-for="field in data?.fields || []"
-          :key="field.label"
-          class="flex items-start"
-        >
-          <div>
-            <p class="text-sm text-gray-500 capitalize">
-              {{ field?.label }}
-            </p>
-            <p class="font-medium capitalize">
-              {{ field?.value || 'Unknown' }}
-            </p>
-          </div>
-        </li>
-      </ul>
+          <img
+            :src="item.url"
+            :alt="item.alt"
+            loading="lazy"
+            width="320"
+            height="320"
+            class="rounded-lg object-cover"
+          >
+        </UCarousel>
+        <div class="flex flex-col items-center">
+          <ul class="space-y-2">
+            <li
+              v-for="field in data?.fields || []"
+              :key="field.label"
+              class="flex items-start"
+            >
+              <div>
+                <p class="text-sm text-gray-500 capitalize">
+                  {{ field?.label }}
+                </p>
+                <p class="font-medium capitalize">
+                  {{ field?.value || 'Unknown' }}
+                </p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
     </UCard>
     <UProgress v-if="isLoading" />
     <div v-if="isError">

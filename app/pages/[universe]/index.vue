@@ -9,8 +9,8 @@ definePageMeta({
 const route = useRoute('universe')
 const universeInfo = KNOWN_UNIVERSES_CONFIG.get(route.params.universe)
 
-const page = ref(1)
-const perPage = ref(6)
+const page = ref(universeInfo?.defaultQueryParams?.page || 1)
+const perPage = ref(universeInfo?.defaultQueryParams?.perPage || 20)
 const { status, data, error } = await universeInfo!.handlers.list(perPage, page)
 const total = ref(0)
 
@@ -38,7 +38,7 @@ const isGridView = computed(() => viewMode.value === 'grid')
       <div class="flex items-center space-x-4">
         <UPagination
           v-model:page="page"
-          :per-page="perPage"
+          :items-per-page="perPage"
           :total="total"
         />
         <UButton
