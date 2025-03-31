@@ -1,13 +1,28 @@
+<script setup lang="ts">
+import { KNOWN_UNIVERSES_CONFIG } from '~/constants'
+
+const universes = KNOWN_UNIVERSES_CONFIG
+</script>
+
 <template>
   <header class="z-10 fixed flex items-center left-0 right-0 top-0 bg-neutral-100 dark:bg-neutral-900 border-b border-b-neutral-100 dark:border-b-neutral-800 h-[var(--application-header-height)]">
     <UContainer class="flex items-center h-20 w-full">
       <nav>
         <ul class="flex gap-2">
           <li>
-            <ApplicationHeaderLink to="/" label="Home" />
+            <ApplicationHeaderLink
+              to="/"
+              icon="i-lucide-home"
+            />
           </li>
-          <li>
-            <ApplicationHeaderLink to="/assignment" label="Read the assignment instructions" />
+          <li v-for="[key, universe] in universes" :key="key">
+            <ApplicationHeaderLink
+              :avatar=" universe.icon ? {
+                src: universe.icon,
+              } : undefined"
+              :to="key"
+              :label="universe.name"
+            />
           </li>
         </ul>
       </nav>

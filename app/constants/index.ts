@@ -9,6 +9,7 @@ export const appDescription = 'Great app to explore different universes.'
 export const KNOWN_UNIVERSES_CONFIG = new Map<string, {
   name: string
   logo?: string
+  icon?: string
   description: string
   handlers: any
   defaultQueryParams?: {
@@ -22,6 +23,7 @@ export const KNOWN_UNIVERSES_CONFIG = new Map<string, {
       {
         name: 'Rick and Morty',
         logo: 'https://upload.wikimedia.org/wikipedia/commons/b/b1/Rick_and_Morty.svg',
+        icon: 'https://static.wikia.nocookie.net/rickandmorty/images/4/4a/Site-favicon.ico',
         description: 'Explore the universe of Rick and Morty.',
         handlers: {
           list: useRickAndMortyList,
@@ -38,6 +40,7 @@ export const KNOWN_UNIVERSES_CONFIG = new Map<string, {
       {
         name: 'Pokemon',
         logo: 'https://upload.wikimedia.org/wikipedia/commons/9/98/International_Pok%C3%A9mon_logo.svg',
+        icon: 'https://upload.wikimedia.org/wikipedia/commons/5/53/Pok%C3%A9_Ball_icon.svg',
         description: 'Explore the world of Pokemon.',
         handlers: {
           list: usePokemonList,
