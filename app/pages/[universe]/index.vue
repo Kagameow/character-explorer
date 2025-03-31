@@ -30,46 +30,42 @@ const isGridView = computed(() => viewMode.value === 'grid')
 </script>
 
 <template>
-  <div class="py-8">
-    <UContainer>
-      <header class="flex items-center justify-between border-b mb-8 py-2 text-xl">
-        <h1>
-          {{ universeInfo?.name }} characters explorer
-        </h1>
-        <div class="flex items-center space-x-4">
-          <UPagination
-            v-model:page="page"
-            :per-page="perPage"
-            :total="total"
-          />
-          <UButton
-            icon="i-lucide-grid"
-            :disabled="isGridView"
-            @click="viewMode = 'grid'"
-          >
-            Grid
-          </UButton>
-          <UButton
-            icon="i-lucide-list"
-            :disabled="isListView"
-            @click="viewMode = 'list'"
-          >
-            List
-          </UButton>
-        </div>
-      </header>
-      <div v-if="isLoading">
-        Loading…
+  <UContainer class="py-8">
+    <header class="flex items-center justify-between border-b mb-8 py-2 text-xl">
+      <h1>
+        {{ universeInfo?.name }} characters explorer
+      </h1>
+      <div class="flex items-center space-x-4">
+        <UPagination
+          v-model:page="page"
+          :per-page="perPage"
+          :total="total"
+        />
+        <UButton
+          icon="i-lucide-grid"
+          :disabled="isGridView"
+          @click="viewMode = 'grid'"
+        >
+          Grid
+        </UButton>
+        <UButton
+          icon="i-lucide-list"
+          :disabled="isListView"
+          @click="viewMode = 'list'"
+        >
+          List
+        </UButton>
       </div>
-      <div v-if="isError">
-        Error: {{ error?.value?.message }}
-      </div>
-      <component
-        :is="isGridView ? PageUniverseViewGrid : PageUniverseViewList"
-        v-if="hasData"
-        :characters="data.results || []"
-        :universe-route="route.params.universe"
-      />
-    </UContainer>
-  </div>
+    </header>
+    <UProgress v-if="isLoading" />
+    <div v-if="isError">
+      Error: {{ error?.message }}
+    </div>
+    <component
+      :is="isGridView ? PageUniverseViewGrid : PageUniverseViewList"
+      v-if="hasData"
+      :characters="data.results || []"
+      :universe-route="route.params.universe"
+    />
+  </UContainer>
 </template>

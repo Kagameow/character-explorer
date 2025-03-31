@@ -4,11 +4,15 @@ export async function usePokemonList(perPage: Ref<number>, page: Ref<number>) {
     offset: ((page.value ?? 1) - 1) * perPage.value,
   }))
 
-  const { data: responseData, status, error, clear }
+  const { data: responseData, status, error }
     = await usePokemonData(
       '/api/v2/pokemon/',
       {
         query,
+        /*
+        Had to set cache to false because of a bug in nuxt-api-party
+        https://github.com/johannschopplich/nuxt-api-party/issues/91
+         */
         cache: false,
       },
     )
@@ -51,6 +55,5 @@ export async function usePokemonList(perPage: Ref<number>, page: Ref<number>) {
     status,
     data: homogenizedData,
     error,
-    clear,
   }
 }
