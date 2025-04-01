@@ -8,9 +8,12 @@ definePageMeta({
 
 const route = useRoute('universe')
 const universeInfo = KNOWN_UNIVERSES_CONFIG.get(route.params.universe)
+const { viewMode } = await useStoreViewMode(route.params.universe)
 
-const page = ref(universeInfo?.defaultQueryParams?.page || 1)
+const defaultPage = universeInfo?.defaultQueryParams?.page || 1
 const perPage = ref(universeInfo?.defaultQueryParams?.perPage || 20)
+const { page } = await useQueryPagination(defaultPage)
+
 const { status, data, error } = await universeInfo!.handlers.list(perPage, page)
 const total = ref(0)
 
@@ -24,9 +27,9 @@ const isLoading = computed(() => status.value === 'pending')
 const isError = computed(() => status.value === 'error')
 const hasData = computed(() => !!data.value && Object.keys(data.value).length)
 
-const viewMode = ref<'list' | 'grid'>('list')
-const isListView = computed(() => viewMode.value === 'list')
-const isGridView = computed(() => viewMode.value === 'grid')
+const pageUniverseViewComponent = computed(() => {
+  return viewMode.value === 'grid' ? PageUniverseViewGrid : PageUniverseViewList
+})
 </script>
 
 <template>
@@ -41,28 +44,15 @@ const isGridView = computed(() => viewMode.value === 'grid')
           :items-per-page="perPage"
           :total="total"
         />
-        <UButton
-          icon="i-lucide-grid"
-          :disabled="isGridView"
-          @click="viewMode = 'grid'"
-        >
-          Grid
-        </UButton>
-        <UButton
-          icon="i-lucide-list"
-          :disabled="isListView"
-          @click="viewMode = 'list'"
-        >
-          List
-        </UButton>
+        <PageUniverseViewSelect v-model="viewMode" />
       </div>
     </header>
     <UProgress v-if="isLoading" />
     <div v-if="isError">
-      Error: {{ error?.message }}
+      {{ error }}
     </div>
     <component
-      :is="isGridView ? PageUniverseViewGrid : PageUniverseViewList"
+      :is="pageUniverseViewComponent"
       v-if="hasData"
       :characters="data.results || []"
       :universe-route="route.params.universe"
