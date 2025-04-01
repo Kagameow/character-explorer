@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { PageCharacterListHandlerResponse } from '~/types/PageCharacter'
+import type { PageCharacterListHandlerResponse } from '~/types/PageCharacterList'
 import { PageUniverseViewGrid, PageUniverseViewList } from '#components'
 import { KNOWN_UNIVERSES_CONFIG } from '~/constants'
 
