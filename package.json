@@ -4,14 +4,13 @@
   "packageManager": "pnpm@10.6.4+sha512.da3d715bfd22a9a105e6e8088cfc7826699332ded60c423b14ec613a185f1602206702ff0fe4c438cb15c979081ce4cb02568e364b15174503a63c7a8e2a5f6c",
   "scripts": {
     "build": "nuxi build",
-    "dev:pwa": "VITE_PLUGIN_PWA=true nuxi dev",
     "dev": "nuxi dev",
     "generate": "nuxi generate",
     "prepare": "nuxi prepare",
     "preview": "nuxi preview",
     "start": "node .output/server/index.mjs",
     "start:generate": "npx serve .output/public",
-    "lint": "eslint .",
+    "lint": "eslint ./app",
     "typecheck": "vue-tsc --noEmit"
   },
   "dependencies": {
@@ -29,7 +28,6 @@
     "@nuxt/devtools": "2.3.2",
     "@nuxt/eslint": "^1.2.0",
     "@tailwindcss/typography": "^0.5.16",
-    "@vite-pwa/nuxt": "^0.10.8",
     "eslint": "^9.23.0",
     "eslint-plugin-format": "^1.0.1",
     "typescript": "^5.8.2",

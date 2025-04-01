@@ -4,7 +4,6 @@ export default defineNuxtConfig({
     '@nuxt/eslint',
     '@nuxt/ui',
     '@pinia/nuxt',
-    '@vite-pwa/nuxt',
     '@vueuse/nuxt',
     'nuxt-api-party',
     '@nuxt/fonts',
