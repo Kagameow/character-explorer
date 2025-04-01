@@ -1,3 +1,4 @@
+import type { ModuleOptions } from 'nuxt-api-party'
 import { usePokemonDetail } from '../composables/pokemon/usePokemonDetail'
 import { usePokemonList } from '../composables/pokemon/usePokemonList'
 import { useRickAndMortyDetail } from '../composables/rick-and-morty/useRickAndMortyDetail'
@@ -5,6 +6,8 @@ import { useRickAndMortyList } from '../composables/rick-and-morty/useRickAndMor
 
 export const appName = 'Universe Explorer'
 export const appDescription = 'Great app to explore different universes.'
+
+type EndpointConfiguration = NonNullable<ModuleOptions['endpoints']>[string]
 
 export const KNOWN_UNIVERSES_CONFIG = new Map<string, {
   name: string
@@ -16,6 +19,7 @@ export const KNOWN_UNIVERSES_CONFIG = new Map<string, {
     page: number
     perPage?: number
   }
+  apiPartyEndpoint?: EndpointConfiguration
 }>(
   [
     [
@@ -32,6 +36,9 @@ export const KNOWN_UNIVERSES_CONFIG = new Map<string, {
         defaultQueryParams: {
           page: 1,
           perPage: 20,
+        },
+        apiPartyEndpoint: {
+          url: 'https://rickandmortyapi.com/api',
         },
       },
     ],
@@ -50,16 +57,9 @@ export const KNOWN_UNIVERSES_CONFIG = new Map<string, {
           page: 1,
           perPage: 18,
         },
-      },
-    ],
-    [
-      'nature-animals',
-      {
-        name: 'Nature Animals',
-        description: 'Explore the world of nature and animals.',
-        handlers: {
-          list: usePokemonList,
-          details: usePokemonDetail,
+        apiPartyEndpoint: {
+          url: 'https://pokeapi.co',
+          schema: 'https://raw.githubusercontent.com/PokeAPI/pokeapi/refs/heads/master/openapi.yml',
         },
       },
     ],
@@ -67,3 +67,9 @@ export const KNOWN_UNIVERSES_CONFIG = new Map<string, {
 )
 
 export const KNOWN_UNIVERSES = Array.from(KNOWN_UNIVERSES_CONFIG.keys())
+
+export const API_PARTY_ENDPOINTS = Object.fromEntries(
+  Array.from(KNOWN_UNIVERSES_CONFIG.entries())
+    .filter(([_, config]) => config.apiPartyEndpoint)
+    .map(([key, config]) => [key, config.apiPartyEndpoint!]),
+) as Record<string, EndpointConfiguration>

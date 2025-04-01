@@ -1,3 +1,5 @@
+import { API_PARTY_ENDPOINTS } from './app/constants'
+
 export default defineNuxtConfig({
   modules: [
     '@nuxt/content',
@@ -40,13 +42,7 @@ export default defineNuxtConfig({
 
   apiParty: {
     endpoints: {
-      'pokemon': {
-        url: 'https://pokeapi.co',
-        schema: 'https://raw.githubusercontent.com/PokeAPI/pokeapi/refs/heads/master/openapi.yml',
-      },
-      'rick-and-morty': {
-        url: 'https://rickandmortyapi.com/api',
-      },
+      ...API_PARTY_ENDPOINTS,
     },
   },
 
