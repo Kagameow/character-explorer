@@ -1,21 +1,17 @@
 <script setup lang="ts">
-defineProps({
-  characters: {
-    type: Object,
-    required: true,
-  },
-  universeRoute: {
-    type: String,
-    required: true,
-  },
-})
+import type { PageCharacterShortInfo } from '~/types/PageCharacterList'
+
+defineProps<{
+  characters: PageCharacterShortInfo[]
+  universe: string
+}>()
 </script>
 
 <template>
   <div class="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
     <UCard
-      v-for="(character, index) in characters"
-      :key="character.id + index"
+      v-for="character in characters"
+      :key="character.id"
       variant="soft"
     >
       <template #header>
@@ -34,13 +30,13 @@ defineProps({
 
       <template #footer>
         <div class="flex items-center justify-between mt-auto pt-2">
-          <div class="text-sm text-gray-500">
-            Some extra info lines
+          <div class="text-sm text-neutral-500 capitalize">
+            {{ character.gridViewText }}
           </div>
 
           <UButton
             trailing-icon="i-lucide-arrow-right"
-            :to="{ name: 'universe-id', params: { universe: universeRoute, id: character.id } }"
+            :to="{ name: 'universe-id', params: { universe, id: character.id } }"
           >
             Details
           </UButton>

@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import type { PageCharacterListHandlerResponse } from '~/types/PageCharacter'
 import { PageUniverseViewGrid, PageUniverseViewList } from '#components'
 import { KNOWN_UNIVERSES_CONFIG } from '~/constants'
 
@@ -14,7 +15,7 @@ const defaultPage = universeInfo?.defaultQueryParams?.page || 1
 const perPage = ref(universeInfo?.defaultQueryParams?.perPage || 20)
 const { page } = await useQueryPagination(defaultPage)
 
-const { status, data, error } = await universeInfo!.handlers.list(perPage, page)
+const { status, data, error } = await universeInfo!.handlers.list(perPage, page) as PageCharacterListHandlerResponse
 const total = ref(0)
 
 watch(() => data.value, (newData) => {
@@ -54,8 +55,8 @@ const pageUniverseViewComponent = computed(() => {
     <component
       :is="pageUniverseViewComponent"
       v-if="hasData"
-      :characters="data.results || []"
-      :universe-route="route.params.universe"
+      :characters="data?.results || []"
+      :universe="route.params.universe"
     />
   </UContainer>
 </template>

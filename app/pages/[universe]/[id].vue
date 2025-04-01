@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { CharacterPicture } from '~/types/PageCharacterId'
+import type { PageCharacterHandlerResponse, PageCharacterPicture } from '~/types/PageCharacterId'
 import { KNOWN_UNIVERSES_CONFIG } from '~/constants'
 
 definePageMeta({
@@ -9,7 +9,7 @@ definePageMeta({
 const route = useRoute('universe-id')
 const universeInfo = KNOWN_UNIVERSES_CONFIG.get(route.params.universe)
 
-const { status, data, error } = await universeInfo!.handlers.details(route.params.id)
+const { status, data, error } = await universeInfo!.handlers.details(route.params.id) as PageCharacterHandlerResponse
 
 const isLoading = computed(() => status.value === 'pending')
 const isError = computed(() => status.value === 'error')
@@ -34,10 +34,11 @@ const hasData = computed(() => !!data.value && Object.keys(data.value).length)
       </template>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         <UCarousel
+          v-if="data?.images"
           v-slot="{ item }"
-          :items="data.images as CharacterPicture[]"
+          :items="data.images as PageCharacterPicture[]"
           class="w-full h-full max-w-xs mx-auto flex items-center justify-center"
-          arrows
+          :arrows="data.images.length > 1"
         >
           <img
             :src="item.url"
@@ -70,7 +71,7 @@ const hasData = computed(() => !!data.value && Object.keys(data.value).length)
     </UCard>
     <UProgress v-if="isLoading" />
     <div v-if="isError">
-      Error: {{ error?.message }}
+      {{ error }}
     </div>
   </UContainer>
 </template>

@@ -1,6 +1,10 @@
 import type { RickAndMortyCharactersApiResponse } from '~/composables/rick-and-morty/types'
+import type {
+  PageCharacterListHandlerResponse,
+} from '~/types/PageCharacterList'
+import { transformGetAllResults } from '~/transformers/rick-and-morty/rickAndMortyList.transformer'
 
-export async function useRickAndMortyList(perPage: Ref<number>, page: Ref<number>) {
+export async function useRickAndMortyList(perPage: Ref<number>, page: Ref<number>): Promise<PageCharacterListHandlerResponse> {
   const query = computed(() => ({
     page: page.value,
   }))
@@ -18,27 +22,11 @@ export async function useRickAndMortyList(perPage: Ref<number>, page: Ref<number
       },
     )
 
-  const transformGetAllResults = (data: RickAndMortyCharactersApiResponse | undefined) => {
-    if (!data || !data.results) {
-      return {}
-    }
-    return {
-      total: data.info.count,
-      results: data.results.map((item) => {
-        return {
-          name: item.name,
-          id: item.id,
-          image: item.image,
-        }
-      }),
-    }
-  }
-
   const homogenizedData = computed(() => {
     if (status.value === 'success') {
       return transformGetAllResults(responseData.value as RickAndMortyCharactersApiResponse | undefined)
     }
-    return {}
+    return undefined
   })
 
   return {

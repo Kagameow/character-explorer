@@ -1,14 +1,10 @@
 <script setup lang="ts">
-defineProps({
-  characters: {
-    type: Object,
-    required: true,
-  },
-  universeRoute: {
-    type: String,
-    required: true,
-  },
-})
+import type { PageCharacterShortInfo } from '~/types/PageCharacterList'
+
+defineProps<{
+  characters: PageCharacterShortInfo[]
+  universe: string
+}>()
 </script>
 
 <template>
@@ -29,7 +25,7 @@ defineProps({
         </div>
         <UButton
           trailing-icon="i-lucide-arrow-right"
-          :to="{ name: 'universe-id', params: { universe: universeRoute, id: character.id } }"
+          :to="{ name: 'universe-id', params: { universe, id: character.id } }"
         >
           Details
         </UButton>
