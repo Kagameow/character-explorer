@@ -1,5 +1,3 @@
-import { pwa } from './app/config/pwa'
-
 export default defineNuxtConfig({
   modules: [
     '@nuxt/content',
@@ -45,11 +43,11 @@ export default defineNuxtConfig({
 
   apiParty: {
     endpoints: {
-      pokemon: {
+      'pokemon': {
         url: 'https://pokeapi.co',
         schema: 'https://raw.githubusercontent.com/PokeAPI/pokeapi/refs/heads/master/openapi.yml',
       },
-      rickAndMorty: {
+      'rick-and-morty': {
         url: 'https://rickandmortyapi.com/api',
       },
     },
@@ -63,6 +61,4 @@ export default defineNuxtConfig({
       },
     },
   },
-
-  pwa,
 })
