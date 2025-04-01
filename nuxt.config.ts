@@ -1,4 +1,4 @@
-import { pwa } from '~/config/pwa'
+import { pwa } from './app/config/pwa'
 
 export default defineNuxtConfig({
   modules: [
