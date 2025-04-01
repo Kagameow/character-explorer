@@ -1,6 +1,10 @@
-import type { RouteParams } from '~/middleware/types'
 import { createError, defineNuxtRouteMiddleware } from '#app'
 import { KNOWN_UNIVERSES } from '~/constants'
+
+interface RouteParams {
+  universe?: typeof KNOWN_UNIVERSES[number] | string
+  id?: string
+}
 
 export default defineNuxtRouteMiddleware((to) => {
   const params = to.params as RouteParams
