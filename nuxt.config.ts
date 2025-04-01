@@ -36,7 +36,7 @@ export default defineNuxtConfig({
     },
     prerender: {
       crawlLinks: false,
-      routes: ['/', '/assignment'],
+      routes: ['/', '/assignment', '/_content/assignment'],
     },
   },
 
