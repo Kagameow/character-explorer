@@ -2,7 +2,7 @@ import type { RickAndMortyCharactersApiResponse } from '~/composables/rick-and-m
 import type {
   PageCharacterListHandlerResponse,
 } from '~/types/PageCharacterList'
-import { transformGetAllResults } from '~/transformers/rick-and-morty/rickAndMortyList.transformer'
+import { transformGetAllResults } from '../../transformers/rick-and-morty/rickAndMortyList.transformer'
 
 export async function useRickAndMortyList(perPage: Ref<number>, page: Ref<number>): Promise<PageCharacterListHandlerResponse> {
   const query = computed(() => ({

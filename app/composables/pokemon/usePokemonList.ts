@@ -1,5 +1,5 @@
 import type { PageCharacterListHandlerResponse } from '~/types/PageCharacterList'
-import { transformGetAllResults } from '~/transformers/pokemon/pokemonList.transformer'
+import { transformGetAllResults } from '../../transformers/pokemon/pokemonList.transformer'
 
 export async function usePokemonList(perPage: Ref<number>, page: Ref<number>): Promise<PageCharacterListHandlerResponse> {
   const query = computed(() => ({
