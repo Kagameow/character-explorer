@@ -23,7 +23,7 @@ NUXT_PUBLIC_API_PARTY_LOTR_TOKEN=your-token-here
 
 ## 🚀 Features
 - **Multi-Universe Support**: Explore characters from different universes.
-- **View Modes Persistence**: Toggle between grid and list views, with the last selected mode remembered. Also, view mode can be shared via URL query.
+- **View Modes Persistence**: Toggle between grid and list views, with the last selected mode remembered. Also, view mode can be shared via URL query. Cookies are used to store the last selected view mode because of compatability with Nuxt.
 - **Pagination**: Navigate through character lists with pagination. Current page is also sharable via URL query.
 - **No Hard-Coding**: The app is designed to be scalable and reusable, with dynamic components and routes that are universe-agnostic.
 
@@ -85,7 +85,7 @@ To add a new universe:
 That’s it! Your universe is now available site-wide.
 
 ## ⚡ Possible Improvements 
-- **Configurable Pagination**: Some universes may have different pagination requirements, or even no proper pagination at all. This implementation serves as a demonstration of the concept. More flexibility could be added to the pagination logic to handle different cases.
+- **Configurable Pagination and Search**: Some universes may have different pagination requirements, or even no proper pagination at all. This implementation serves as a demonstration of the concept. More flexibility could be added to the pagination logic to handle different cases.
 - **Customizable UI**: App provides a basic UI for character lists and detail pages. Support for custom UI components could be added to the config, allowing for more customisation per universe.
 - **Authorization**: Currently, the LOTR API requires an authorization token. This could be handled more gracefully by implementing a proper auth page and storing the token on the client side. The current implementation simply checks for the token in the `.env` file.
 - **Nuxt API Party Cache Bug**: Unfortunately, the Nuxt API Party package has a [bug](https://github.com/johannschopplich/nuxt-api-party/issues/91) that prevents it from properly handling cache with newer Nuxt versions. With a proper effort this bug could be fixed, but my time was limited. The current implementation disables cache to avoid the bug, but it is not ideal.
