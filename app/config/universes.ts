@@ -2,6 +2,7 @@ import type { UniverseConfig } from '../types/universeConfig'
 import { LORD_OF_THE_RINGS_UNIVERSE_CONFIG, LORD_OF_THE_RINGS_UNIVERSE_KEY } from './lord-of-the-rings'
 import { POKEMON_UNIVERSE_CONFIG, POKEMON_UNIVERSE_KEY } from './pokemon'
 import { RICK_AND_MORTY_UNIVERSE_CONFIG, RICK_AND_MORTY_UNIVERSE_KEY } from './rick-and-morty'
+import { STAR_WARS_UNIVERSE_CONFIG, STAR_WARS_UNIVERSE_KEY } from './star-wars'
 
 export const UNIVERSES_CONFIG = new Map<string, UniverseConfig>(
   [
@@ -16,6 +17,10 @@ export const UNIVERSES_CONFIG = new Map<string, UniverseConfig>(
     [
       LORD_OF_THE_RINGS_UNIVERSE_KEY,
       LORD_OF_THE_RINGS_UNIVERSE_CONFIG,
+    ],
+    [
+      STAR_WARS_UNIVERSE_KEY,
+      STAR_WARS_UNIVERSE_CONFIG,
     ],
   ],
 )

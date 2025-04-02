@@ -96,3 +96,4 @@ That’s it! Your universe is now available site-wide.
 - Rick & Morty API: https://rickandmortyapi.com
 - Pokémon API: https://pokeapi.co
 - LOTR API: https://the-one-api.dev/
+- Star Wars API: https://swapi.dev/
