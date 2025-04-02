@@ -2,8 +2,6 @@
 
 **Fact-check your fandom.** A Nuxt 3-powered app for exploring characters from multiple universes — including Rick & Morty, Pokémon, and more.
 
----
-
 ## 💪 Try It Yourself
 
 https://gleaming-madeleine-abf8bb.netlify.app/
@@ -98,5 +96,3 @@ That’s it! Your universe is now available site-wide.
 - Rick & Morty API: https://rickandmortyapi.com
 - Pokémon API: https://pokeapi.co
 - LOTR API: https://the-one-api.dev/
-
----
