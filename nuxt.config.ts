@@ -1,5 +1,5 @@
 import { process } from 'std-env'
-import { API_PARTY_ENDPOINTS } from './app/constants'
+import { API_PARTY_ENDPOINTS } from './app/config/universes'
 
 export default defineNuxtConfig({
   modules: [

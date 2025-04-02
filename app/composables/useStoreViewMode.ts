@@ -1,17 +1,18 @@
+import type { PageCharacterListViewMode } from '~/types/PageCharacterList'
 import { useCookie, useRoute, useRouter } from 'nuxt/app'
 
 export async function useStoreViewMode(universeKey: string) {
   const route = useRoute()
   const router = useRouter()
 
-  const viewModeCookie = useCookie<'grid' | 'list'>(`${universeKey}-view-mode`, {
+  const viewModeCookie = useCookie<PageCharacterListViewMode>(`${universeKey}-view-mode`, {
     maxAge: 60 * 60 * 24 * 365,
     sameSite: 'lax',
     default: () => 'grid',
   })
 
-  const viewMode = ref<'grid' | 'list'>(
-    route.query.view as 'grid' | 'list' || viewModeCookie.value,
+  const viewMode = ref<PageCharacterListViewMode>(
+    route.query.view as PageCharacterListViewMode || viewModeCookie.value,
   )
 
   watch(viewMode, async (newValue) => {

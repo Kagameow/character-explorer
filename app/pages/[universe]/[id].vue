@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { PageCharacterHandlerResponse, PageCharacterPicture } from '~/types/PageCharacterId'
-import { KNOWN_UNIVERSES_CONFIG } from '~/constants'
+import { KNOWN_UNIVERSES_CONFIG } from '~/config/universes'
 
 definePageMeta({
   middleware: 'validate-universe',

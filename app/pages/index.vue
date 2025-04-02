@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { KNOWN_UNIVERSES_CONFIG } from '~/constants'
+import { KNOWN_UNIVERSES_CONFIG } from '~/config/universes'
 
 definePageMeta({
   middleware: 'validate-universe',

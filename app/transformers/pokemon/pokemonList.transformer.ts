@@ -10,6 +10,7 @@ function extractPokemonIdFromUrl(url: string) {
   return match ? match[1] : null
 }
 
+// I don't like the idea of hardcoding links like this, but other option is to make multiple requests
 function generatePokemonImageUrl(id: string) {
   return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`
 }

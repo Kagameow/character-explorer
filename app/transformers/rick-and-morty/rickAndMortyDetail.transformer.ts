@@ -19,6 +19,14 @@ export function transformGetByIdResults(data: RickAndMortyCharacter | undefined)
         value: data.gender,
       },
       {
+        label: 'Type',
+        value: data.type || 'Unknown',
+      },
+      {
+        label: 'Episode Count',
+        value: data.episode.length,
+      },
+      {
         label: 'Status',
         value: data.status,
       },

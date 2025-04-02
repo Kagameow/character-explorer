@@ -1,5 +1,7 @@
 import type { AsyncDataRequestStatus, NuxtError } from '#app'
 
+export type PageCharacterListViewMode = 'grid' | 'list'
+
 export interface PageCharacterListData {
   total: number
   results: PageCharacterShortInfo[]

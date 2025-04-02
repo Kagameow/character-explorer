@@ -1,7 +1,9 @@
 <script setup lang="ts">
-const viewMode = defineModel<'grid' | 'list'>()
+import type { PageCharacterListViewMode } from '~/types/PageCharacterList'
 
-function setViewMode(view: 'grid' | 'list') {
+const viewMode = defineModel<PageCharacterListViewMode>()
+
+function setViewMode(view: PageCharacterListViewMode) {
   viewMode.value = view
 }
 
