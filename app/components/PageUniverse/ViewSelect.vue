@@ -3,27 +3,27 @@ import type { PageCharacterListViewMode } from '~/types/PageCharacterList'
 
 const viewMode = defineModel<PageCharacterListViewMode>()
 
-function setViewMode(view: PageCharacterListViewMode) {
-  viewMode.value = view
-}
+const modes: { icon: string, label: string, value: PageCharacterListViewMode }[] = [
+  { icon: 'i-lucide-grid', label: 'Grid', value: 'grid' },
+  { icon: 'i-lucide-list', label: 'List', value: 'list' },
+]
 
-const isListView = computed(() => viewMode.value === 'list')
-const isGridView = computed(() => viewMode.value === 'grid')
+function setViewMode(mode: PageCharacterListViewMode) {
+  viewMode.value = mode
+}
 </script>
 
 <template>
-  <UButton
-    icon="i-lucide-grid"
-    :disabled="isGridView"
-    @click="setViewMode('grid')"
-  >
-    Grid
-  </UButton>
-  <UButton
-    icon="i-lucide-list"
-    :disabled="isListView"
-    @click="setViewMode('list')"
-  >
-    List
-  </UButton>
+  <div class="flex gap-2">
+    <UButton
+      v-for="mode in modes"
+      :key="mode.value"
+      :icon="mode.icon"
+      :disabled="viewMode === mode.value"
+      class="transition-all duration-200"
+      @click="setViewMode(mode.value)"
+    >
+      {{ mode.label }}
+    </UButton>
+  </div>
 </template>

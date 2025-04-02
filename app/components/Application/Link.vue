@@ -10,8 +10,15 @@ const props = defineProps<{
 
 const route = useRoute()
 
+const isExternalLink = computed(() =>
+  /^https?:\/\//.test(props.to),
+)
+
 // Workaround to avoid query params being reset when navigating to the same route
 function getNavLink(targetPath: string) {
+  if (isExternalLink.value) {
+    return targetPath
+  }
   return route.path === targetPath
     ? { path: targetPath, query: route.query }
     : { path: targetPath }

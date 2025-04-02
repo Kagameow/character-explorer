@@ -36,7 +36,7 @@ const breadcrumbItems: BreadcrumbItem[] = [
     />
     <UAlert
       v-if="isError"
-      title="Something went wrong"
+      title="Failed to load character information"
       :description="error!.message"
     />
   </UContainer>

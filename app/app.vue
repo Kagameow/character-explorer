@@ -10,7 +10,8 @@ useHead({
   <UApp>
     <Application>
       <ApplicationHeader />
-      <NuxtPage />
+      <NuxtPage class="min-h-[calc(100vh-var(--application-footer-height)-4rem)]" />
+      <ApplicationFooter />
     </Application>
   </UApp>
 </template>

@@ -49,9 +49,11 @@ const pageUniverseViewComponent = computed(() => {
       </div>
     </header>
     <UProgress v-if="isLoading" />
-    <div v-if="isError">
-      {{ error }}
-    </div>
+    <UAlert
+      v-if="isError"
+      title="Failed to load characters list"
+      :description="error!.message"
+    />
     <component
       :is="pageUniverseViewComponent"
       v-if="hasData"

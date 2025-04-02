@@ -1,12 +1,16 @@
 <script setup lang="ts">
-import { HEADER_LINKS } from './header-links'
+import type { NavigationLink } from '~/types'
+
+const { links } = defineProps<{
+  links: NavigationLink[]
+}>()
 </script>
 
 <template>
   <nav>
     <ul class="flex gap-2">
-      <li v-for="link in HEADER_LINKS" :key="link.to">
-        <ApplicationHeaderLink
+      <li v-for="link in links" :key="link.to">
+        <ApplicationLink
           :to="link.to"
           :icon="link.icon"
           :label="link.label"
