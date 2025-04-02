@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { HEADER_LINKS } from './headerLinks'
+import { HEADER_LINKS } from './header-links'
 </script>
 
 <template>

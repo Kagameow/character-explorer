@@ -1,5 +1,5 @@
 import type { ModuleOptions } from 'nuxt-api-party'
-import type { PageCharacterHandlerResponse } from './PageCharacterId'
+import type { PageCharacterHandlerResponse } from './PageCharacterDetails'
 import type { PageCharacterListHandlerResponse } from './PageCharacterList'
 
 type EndpointConfiguration = NonNullable<ModuleOptions['endpoints']>[string]

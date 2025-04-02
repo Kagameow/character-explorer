@@ -37,7 +37,7 @@ const pageUniverseViewComponent = computed(() => {
   <UContainer class="py-8">
     <header class="flex items-center justify-between border-b mb-8 py-2 text-xl">
       <h1>
-        {{ universeInfo?.name }} characters explorer
+        {{ universeInfo?.name }} characters
       </h1>
       <div class="flex items-center space-x-4">
         <UPagination

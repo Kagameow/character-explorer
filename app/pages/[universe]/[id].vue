@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import type { PageCharacterHandlerResponse, PageCharacterPicture } from '~/types/PageCharacterId'
+import type { BreadcrumbItem } from '#ui/components/Breadcrumb.vue'
+import type { PageCharacterHandlerResponse } from '~/types/PageCharacterDetails'
 import { KNOWN_UNIVERSES_CONFIG } from '~/config/universes'
 
 definePageMeta({
@@ -14,64 +15,29 @@ const { status, data, error } = await universeInfo!.handlers.details(route.param
 const isLoading = computed(() => status.value === 'pending')
 const isError = computed(() => status.value === 'error')
 const hasData = computed(() => !!data.value && Object.keys(data.value).length)
+
+const breadcrumbItems: BreadcrumbItem[] = [
+  { label: 'Home', to: '/' },
+  { label: universeInfo?.name, to: { name: 'universe', params: { universe: route.params.universe } } },
+  { label: data.value?.name || route.params.id },
+]
 </script>
 
 <template>
   <UContainer class="py-8">
     <UBreadcrumb
-      :items="[
-        { label: 'Home', to: '/' },
-        { label: universeInfo?.name, to: { name: 'universe', params: { universe: route.params.universe } } },
-        { label: data?.name || route.params.id },
-      ]"
+      :items="breadcrumbItems"
       class="mb-4"
     />
-    <UCard v-if="hasData">
-      <template #header>
-        <h2 class="text-xl font-semibold">
-          Character Details
-        </h2>
-      </template>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <UCarousel
-          v-if="data?.images"
-          v-slot="{ item }"
-          :items="data.images as PageCharacterPicture[]"
-          class="w-full h-full max-w-xs mx-auto flex items-center justify-center"
-          :arrows="data.images.length > 1"
-        >
-          <img
-            :src="item.url"
-            :alt="item.alt"
-            loading="lazy"
-            width="320"
-            height="320"
-            class="rounded-lg object-cover"
-          >
-        </UCarousel>
-        <div class="flex flex-col items-center">
-          <ul class="space-y-2">
-            <li
-              v-for="field in data?.fields || []"
-              :key="field.label"
-              class="flex items-start"
-            >
-              <div>
-                <p class="text-sm text-gray-500 capitalize">
-                  {{ field?.label }}
-                </p>
-                <p class="font-medium capitalize">
-                  {{ field?.value || 'Unknown' }}
-                </p>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </UCard>
     <UProgress v-if="isLoading" />
-    <div v-if="isError">
-      {{ error }}
-    </div>
+    <PageCharacterDetailView
+      v-if="hasData"
+      :character="data!"
+    />
+    <UAlert
+      v-if="isError"
+      title="Something went wrong"
+      :description="error!.message"
+    />
   </UContainer>
 </template>

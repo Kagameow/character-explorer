@@ -1,4 +1,4 @@
-import type { PageCharacterHandlerResponse } from '~/types/PageCharacterId'
+import type { PageCharacterHandlerResponse } from '~/types/PageCharacterDetails'
 import { transformGetByIdResults } from '../../transformers/pokemon/pokemonDetail.transformer'
 
 export async function usePokemonDetail(id: string | number): Promise<PageCharacterHandlerResponse> {

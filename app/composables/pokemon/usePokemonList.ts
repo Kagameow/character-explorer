@@ -12,6 +12,7 @@ export async function usePokemonList(perPage: Ref<number>, page: Ref<number>): P
       '/api/v2/pokemon/',
       {
         query,
+        lazy: true,
         /*
         Had to set cache to false because of a bug in nuxt-api-party
         https://github.com/johannschopplich/nuxt-api-party/issues/91

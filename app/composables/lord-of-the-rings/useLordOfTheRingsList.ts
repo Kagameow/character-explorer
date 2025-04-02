@@ -15,6 +15,7 @@ export async function useLordOfTheRingsList(perPage: Ref<number>, page: Ref<numb
       'character',
       {
         query,
+        lazy: true,
         /*
         Had to set cache to false because of a bug in nuxt-api-party
         https://github.com/johannschopplich/nuxt-api-party/issues/91

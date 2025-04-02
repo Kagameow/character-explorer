@@ -14,6 +14,7 @@ export async function useRickAndMortyList(perPage: Ref<number>, page: Ref<number
       'character',
       {
         query,
+        lazy: true,
         /*
         Had to set cache to false because of a bug in nuxt-api-party
         https://github.com/johannschopplich/nuxt-api-party/issues/91

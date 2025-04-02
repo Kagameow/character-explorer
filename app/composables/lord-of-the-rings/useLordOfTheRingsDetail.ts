@@ -1,5 +1,5 @@
 import type { LotrCharactersApiResponse } from '~/composables/lord-of-the-rings/types'
-import type { PageCharacterHandlerResponse } from '~/types/PageCharacterId'
+import type { PageCharacterHandlerResponse } from '~/types/PageCharacterDetails'
 import { transformGetByIdResults } from '../../transformers/lord-of-the-rings/lordOfTheRingsDetail.transformer'
 
 export async function useLordOfTheRingsDetail(id: string | number): Promise<PageCharacterHandlerResponse> {

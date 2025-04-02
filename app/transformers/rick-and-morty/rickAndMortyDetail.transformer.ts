@@ -1,5 +1,5 @@
 import type { RickAndMortyCharacter } from '~/composables/rick-and-morty/types'
-import type { CharacterDetails } from '~/types/PageCharacterId'
+import type { CharacterDetails } from '~/types/PageCharacterDetails'
 
 export function transformGetByIdResults(data: RickAndMortyCharacter | undefined): CharacterDetails | undefined {
   if (!data) {

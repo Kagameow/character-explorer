@@ -1,5 +1,5 @@
 import type { operations } from '#nuxt-api-party/pokemon'
-import type { CharacterDetails, PageCharacterPicture } from '~/types/PageCharacterId'
+import type { CharacterDetails, PageCharacterPicture } from '~/types/PageCharacterDetails'
 import { capitalizeFirstLetter } from '../../utils'
 
 type PokemonIdResponse = operations['pokemon_retrieve']['responses']['200']['content']['application/json']

@@ -1,5 +1,5 @@
 import type { RickAndMortyCharacter } from '~/composables/rick-and-morty/types'
-import type { PageCharacterHandlerResponse } from '~/types/PageCharacterId'
+import type { PageCharacterHandlerResponse } from '~/types/PageCharacterDetails'
 import { transformGetByIdResults } from '../../transformers/rick-and-morty/rickAndMortyDetail.transformer'
 
 export async function useRickAndMortyDetail(id: string | number): Promise<PageCharacterHandlerResponse> {

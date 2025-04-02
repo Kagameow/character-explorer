@@ -1,5 +1,5 @@
 import type { LotrCharactersApiResponse } from '~/composables/lord-of-the-rings/types'
-import type { CharacterDetails } from '~/types/PageCharacterId'
+import type { CharacterDetails } from '~/types/PageCharacterDetails'
 
 export function transformGetByIdResults(data: LotrCharactersApiResponse | undefined): CharacterDetails | undefined {
   const character = data?.docs?.[0]
