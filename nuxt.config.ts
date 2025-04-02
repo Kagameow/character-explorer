@@ -1,3 +1,4 @@
+import { process } from 'std-env'
 import { API_PARTY_ENDPOINTS } from './app/constants'
 
 export default defineNuxtConfig({
@@ -16,6 +17,12 @@ export default defineNuxtConfig({
   },
 
   css: ['~/assets/css/main.css'],
+
+  runtimeConfig: {
+    public: {
+      apiPartyLotrToken: process.env.NUXT_PUBLIC_API_PARTY_LOTR_TOKEN,
+    },
+  },
 
   future: {
     compatibilityVersion: 4,
