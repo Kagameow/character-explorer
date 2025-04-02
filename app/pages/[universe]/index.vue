@@ -15,7 +15,7 @@ const defaultPage = universeInfo?.defaultQueryParams?.page || 1
 const perPage = ref(universeInfo?.defaultQueryParams?.perPage || 20)
 const { page } = await useQueryPagination(defaultPage)
 
-const { status, data, error } = await universeInfo!.handlers.list(perPage, page) as PageCharacterListHandlerResponse
+const { status, data, error } = await universeInfo!.handlers.list({ perPage, page }) as PageCharacterListHandlerResponse
 const total = ref(0)
 
 watch(() => data.value, (newData) => {

@@ -52,6 +52,10 @@ export function transformGetByIdResults(data: PokemonIdResponse | null): Charact
     images: parsePokemonPictures(data.sprites),
     fields: [
       {
+        label: 'ID',
+        value: `#${data.id}`,
+      },
+      {
         label: 'Abilities',
         value: data.abilities.map(ability => ability.ability.name).join(', '),
       },

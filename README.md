@@ -36,7 +36,7 @@ To add a new universe:
 
   ```ts
   interface UniverseHandlers {
-    list: (perPage: Ref<number>, page: Ref<number>) => Promise<PageCharacterListHandlerResponse>
+    list: (query: PageCharacterListPaginationQuery) => Promise<PageCharacterListHandlerResponse>
     details: (id: string | number) => Promise<PageCharacterHandlerResponse>
   }
 

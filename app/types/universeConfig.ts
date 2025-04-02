@@ -1,11 +1,11 @@
 import type { ModuleOptions } from 'nuxt-api-party'
 import type { PageCharacterHandlerResponse } from './PageCharacterDetails'
-import type { PageCharacterListHandlerResponse } from './PageCharacterList'
+import type { PageCharacterListHandlerResponse, PageCharacterListPaginationQuery } from './PageCharacterList'
 
 type EndpointConfiguration = NonNullable<ModuleOptions['endpoints']>[string]
 
 interface UniverseHandlers {
-  list: (perPage: Ref<number>, page: Ref<number>) => Promise<PageCharacterListHandlerResponse>
+  list: (query: PageCharacterListPaginationQuery) => Promise<PageCharacterListHandlerResponse>
   details: (id: string | number) => Promise<PageCharacterHandlerResponse>
 }
 

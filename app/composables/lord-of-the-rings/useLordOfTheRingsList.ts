@@ -1,13 +1,14 @@
 import type { LotrCharactersApiResponse } from '~/composables/lord-of-the-rings/types'
 import type {
   PageCharacterListHandlerResponse,
+  PageCharacterListPaginationQuery,
 } from '~/types/PageCharacterList'
 import { transformGetAllResults } from '../../transformers/lord-of-the-rings/lordOfTheRingsList.transformer'
 
-export async function useLordOfTheRingsList(perPage: Ref<number>, page: Ref<number>): Promise<PageCharacterListHandlerResponse> {
+export async function useLordOfTheRingsList(queryData: PageCharacterListPaginationQuery): Promise<PageCharacterListHandlerResponse> {
   const query = computed(() => ({
-    page: page.value,
-    limit: perPage.value,
+    page: queryData.page?.value ?? 1,
+    limit: queryData.perPage?.value ?? 18,
   }))
 
   const { data: responseData, status, error }

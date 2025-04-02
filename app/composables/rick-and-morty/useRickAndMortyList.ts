@@ -1,12 +1,13 @@
 import type { RickAndMortyCharactersApiResponse } from '~/composables/rick-and-morty/types'
 import type {
   PageCharacterListHandlerResponse,
+  PageCharacterListPaginationQuery,
 } from '~/types/PageCharacterList'
 import { transformGetAllResults } from '../../transformers/rick-and-morty/rickAndMortyList.transformer'
 
-export async function useRickAndMortyList(perPage: Ref<number>, page: Ref<number>): Promise<PageCharacterListHandlerResponse> {
+export async function useRickAndMortyList(queryData: PageCharacterListPaginationQuery): Promise<PageCharacterListHandlerResponse> {
   const query = computed(() => ({
-    page: page.value,
+    page: queryData.page?.value ?? 1,
   }))
 
   const { data: responseData, status, error }
