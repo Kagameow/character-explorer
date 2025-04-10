@@ -44,7 +44,7 @@ To add a new universe:
   export async function useStarWarsDetail(...) { ... }
   ```
 
-- **Create an API response transformer** under `app/composables/<universe>/transformers.ts`:
+- **Create an API response transformer** under `app/transformers/<universe>/`:
 
   ```ts
   export function transformStarWarsListResponse(response): PageCharacterListHandlerResponse {
