@@ -18,9 +18,9 @@ const { page } = await useQueryPagination(defaultPage)
 const { status, data, error } = await universeInfo!.handlers.list({ perPage, page }) as PageCharacterListHandlerResponse
 const total = ref(0)
 
-watch(() => data.value, (newData) => {
-  if (newData?.total) {
-    total.value = newData.total
+watch(() => data.value?.total, (newData) => {
+  if (newData) {
+    total.value = newData
   }
 }, { immediate: true })
 
